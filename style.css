@@ -43,6 +43,8 @@ html,body{
   color: white;  
   font-size: 5vw;
   line-height: 1;
+  position: absolute;
+  left: 22%;
 }
 
 #left{
@@ -63,14 +65,46 @@ html,body{
 
 #nav h3{
   font-weight: 600;
-  font-size: 13px;
+  font-size: 17px;
   letter-spacing: 2px;
 }
 
-#nav a{
+#nav a {
+  position: relative;              
   text-decoration: none;
   color: white;
-  font-size: 10px;
+  font-size: 15px;
+  transition: transform 0.3s ease, color 0.3s ease; 
+}
+
+#nav a:hover {
+  transform: scale(1.1); 
+  color: #f0f0f0;
+}
+
+#nav a::after {
+  content: '';                    
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px; 
+  background-color: white;        
+  transition: width 0.3s ease, transform 0.3s ease; 
+}
+
+#nav a:hover::after {
+  width: 100%; 
+  transform: scaleX(1); 
+}
+
+#nav a:active {
+  transform: scale(0.9); 
+  color: #f0f0f0; 
+}
+
+#nav a:active::after {
+  width: 100%; 
 }
 
 #centerimg{
@@ -78,7 +112,7 @@ html,body{
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: 40%;
+  width: 60%;
   height: 60%;
   /* background-image: url("https://plus.unsplash.com/premium_photo-1668896122605-debd3fed81a4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");  */
   background-image: url("https://plus.unsplash.com/premium_photo-1682095661711-f5d67d0e75a9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
@@ -86,33 +120,65 @@ html,body{
   background-position: center;
 }
 
-#centerimg #text{
-  display: flex;
+#text{
+  font-family: "gilroy";
+  display:block;
   position: absolute;
-  height: 60px;
-  top: 110%;
+  top: 102%;
+  height: 180px;
   width: 100%;
   color: white;
+  /* background-color: rgb(140, 155, 128); */
 }
 
-#points{
+#point1{
+  width: 100%;
+  height: 50%;
+  display: flex;
+}
+
+#heading1{
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px;
+  display: flex;
+  justify-content:center;
+  align-items:flex-start;
   width: 30%;
   height: 100%;
 }
 
-#content{
+#para1{
+  padding: 5px 5px;
   width: 70%;
+  height: 100%;
+  font-size: 15;
+  font-weight: 400;
+}
+
+#point2{
+  display: flex;
+  width: 100%;
+  height: 50%;
+}
+
+#heading2{
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px;
+  display: flex;
+  justify-content:center;
+  align-items:flex-start;
+  width: 30%;
   height: 100%;
 }
 
-#points h5{
-  margin-bottom: 5%;
-}
-
-#content p{
+#para2{
+  padding: 5px 5px;
+  width: 70%;
+  height: 100%;
+  font-size: 15;
   font-weight: 400;
-  line-height: 20px;
-  font-size: 9px;
 }
 
 #scroll{
@@ -135,7 +201,7 @@ html,body{
 #scroll h4{
   letter-spacing: 10px;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 12px;
   color: white;
 }
 
@@ -148,7 +214,7 @@ html,body{
   background-position: center;
 }
 
-#center #card{
+#card{
   z-index: 9999;
   display: flex;
   right: -5%;
@@ -156,18 +222,45 @@ html,body{
   position: absolute;
   width: 250px;
   height: 160px;
-  background-color: red;
 }
 
-#cicons{
+#cicons {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   width: 30%;
   height: 100%;
-  background-color: white;
+  background: linear-gradient(135deg, #3d3d3d, #615858);
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
+
+#cicons button {
+  width: 80%;
+  height: 40%;
+  border-radius: 50%;
+  border: none;
+  font-size: 25px;
+  background-color: #7e7a7a;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; 
+}
+
+#cicons button:hover {
+  cursor: pointer;
+  background-color: rgb(161, 157, 157); 
+  color: black;
+  transform: scale(1.1); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+
+#cicons button:active {
+  transform: scale(0.95); 
+  background-color: rgb(200, 200, 200); 
+}
+
 
 #cimage{
   width: 70%;
@@ -190,19 +283,62 @@ html,body{
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 70%;
+  height: 74%;
 }
 
-#rmenu #rmenulinks{
+#rmenu #searchButton{
+  background:none;
+  width: 70%;
+  height: 10%;
+  border: none;
+  font-size: 30px;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; 
+}
+
+#rmenu #searchButton:hover{
+  cursor: pointer;
+  background-color: #82616db1;
+  color: black;
+  transform: scale(1.1); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#rmenu #searchButton:active {
+  transform: scale(0.95); 
+  background-color: rgb(200, 200, 200); 
+}
+
+#rmenulinks {
+  width: 100%;
+  height: 80%;
   display: flex;
+  flex-direction: column;
   gap: 50px;
-  transform: translateY(-150px) rotate(90deg);
+  justify-content: center;
+  align-items: center;
 }
 
-#rmenulinks a{
-  color: white;
-  text-decoration: none;
-  font-weight: 400;
-  font-size: 12px;
+#rmenulinks button {
+  width: 50%;
+  height: 10%;
+  color: #333; 
+  font-size: 18px; 
+  border-radius: 25px; 
+  background-color: #82616D;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
 
+#rmenulinks button:hover {
+  cursor: pointer;
+  transform: scale(1.25); /* Slight enlargement on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+#rmenulinks button:active {
+  transform: scale(1.1); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
